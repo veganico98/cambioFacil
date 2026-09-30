@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // Versão do JavaScript
+    "strict": true, // Verificações rigorosas
+    "sourceMap": true, // Gera arquivos .map
+    "allowJs": true, // Permite arquivos .js
+    "removeComments": true, // Remove comentários do build
+    "noImplicitReturns": true, // Exige retorno explícito
+    "rootDir": "src/typescript", // Pasta do código-fonte
+    "outDir": "dist", // Pasta do build
+    "isolatedModules": true // Compilação por módulo
+  },
+
+  "include": ["src"], // Arquivos incluídos
+  "exclude": ["node_modules"] // Arquivos ignorados
+}
