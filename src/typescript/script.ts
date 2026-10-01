@@ -2,6 +2,7 @@ import Cambio from "./cambio.js";
 
 const deSelect = document.getElementById("de-select");
 const paraSelect = document.getElementById("para-select");
+const inputValue = document.getElementById("inputValue");
 
 function validateSelect(select: unknown) {
   if (select instanceof HTMLSelectElement) {
@@ -10,6 +11,20 @@ function validateSelect(select: unknown) {
     return "Erro";
   }
 }
+
+function multiplicator() {
+    if (inputValue instanceof HTMLInputElement) {
+        return Number(inputValue.value)
+    } else {
+        return
+    }
+}
+
+inputValue?.addEventListener("input", () => {
+    fetchCambio()
+})
+
+inputValue?.addEventListener
 
 let deValue = validateSelect(deSelect);
 let paraValue = validateSelect(paraSelect);
@@ -81,10 +96,13 @@ async function fetchCambio() {
   );
   const data = await response.json();
   const dataCurrency = await fetchCurrency();
-  handleCambio(data, dataCurrency);
+  const numberMultiplicator = multiplicator();
+  if (numberMultiplicator) {    
+    handleCambio(data, dataCurrency, numberMultiplicator);
+  }
 }
 
-function handleCambio(data: any, currency: any) {
-  const cambio = new Cambio(data, currency, 2);
+function handleCambio(data: any, currency: any, multiplicator: number) {
+  const cambio = new Cambio(data, currency, multiplicator);
   cambio.init();
 }
