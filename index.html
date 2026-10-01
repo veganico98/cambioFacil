@@ -1,11 +1,293 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/tailwind/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=payments,local_atm,paid"
+    />
     <title>Câmbio Fácil</title>
-</head>
-<body>
-    
-</body>
+  </head>
+
+  <body class="bg-emerald-50">
+    <header
+      class="bg-emerald-50 grid grid-cols-2 lg:grid-cols-3 place-items-center items-center justify-between px-8 lg:px-20 py-4 border-b-1 border-gray-300/90"
+    >
+      <div class="flex items-center gap-2">
+        <div
+          class="w-13 h-13 bg-slate-950 flex items-center justify-center rounded-xl"
+        >
+          <span class="text-emerald-400 material-symbols-outlined"> paid </span>
+        </div>
+        <h1 class="font-manrope font-bold text-xl">
+          câmbio fácil<span class="text-emerald-400">.</span>
+        </h1>
+      </div>
+      <div
+        class="hidden lg:flex gap-4 *:text-gray-500 *:hover:text-black *:duration-200"
+      >
+        <a href="#home">Home</a>
+        <a href="#cambio">Câmbio</a>
+        <a href="#mercado">Mercado</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <span
+          class="w-2 h-2 bg-emerald-400 rounded-full shadow shadow-[0_0_4px_theme(colors.emerald.400)] animate-pulse [animation-duration:4s]"
+        ></span>
+        <p class="text-gray-500">Ao vivo</p>
+      </div>
+    </header>
+
+    <section
+      class="flex flex-col lg:flex-row items-center justify-center lg:pt-20"
+    >
+      <div id="home" class="py-12 bg-emerald-50">
+        <div class="px-5 flex flex-col gap-5">
+          <div
+            class="w-[300px] font-semibold text-emerald-700 bg-emerald-50 flex items-center justify-center gap-2 px-2 py-0.5 rounded-2xl border-1 border-emerald-300"
+          >
+            <span
+              class="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow shadow-[0_0_4px_theme(colors.emerald.300)] animate-pulse [animation-duration:4s]"
+            ></span>
+            <p class="text-sm">SIMPLES, RÁPIDO E TRANSPARENTE</p>
+          </div>
+          <div class="font-manrope text-3xl lg:text-5xl">
+            <h1 class="">Seu dinheiro,</h1>
+            <h1 class="text-emerald-500">sem fronteiras.</h1>
+          </div>
+          <div class="text-gray-500 lg:w-96">
+            <p>
+              Converta moedas com taxas atualizadas e saiba exatamente quanto
+              seu dinheiro vale, onde quer que você esteja.
+            </p>
+          </div>
+          <div class="border-b-1 border-gray-300/90"></div>
+          <div>
+            <div class="">
+              <h1 class="font-manrope">30/09</h1>
+              <p class="text-[12px] text-gray-500">dados atualizados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="cambio" class="w-full lg:max-w-[50vw] xl:max-w-[35vw] px-4">
+        <div
+          class="flex flex-col gap-6 border-1 border-gray-300 px-6 py-6 rounded-3xl shadow shadow-[0_0_800px_theme(colors.emerald.300)]"
+        >
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="font-manrope text-lg">Converter moedas</h1>
+              <p class="text-[12px] text-gray-500">
+                Cotação comercial atualizada agora
+              </p>
+            </div>
+            <div>
+              <div
+                class="w-13 h-13 bg-gray-200 flex items-center justify-center rounded-xl"
+              >
+                <span class="text-gray-500 material-symbols-outlined">
+                  payments
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <h3 class="font-manrope text-[12px] text-gray-500">VOCÊ ENVIA</h3>
+            <div
+              class="h-12 bg-gray-200 flex items-center justify-between border-1 border-gray-300 rounded-lg px-6 has-[:focus]:border-emerald-500"
+            >
+              <div>
+                <span class="font-manrope text-gray-500">R$</span>
+                <input
+                  class="outline-none ring-0 focus:outline-none focus:ring-0"
+                  type="text"
+                />
+              </div>
+              <span class="font-manrope text-gray-500">BRL</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-between gap-4">
+            <div class="w-full flex justify-between lg:gap-4 w-full">
+              <div>
+                <h3 class="text-[12px] font-manrope text-gray-500">DE</h3>
+                <div class="relative">
+                  <div
+                    class="flex items-center justify-between gap-4 px-4 border border-gray-400/80 rounded-xl py-3"
+                  >
+                    <div
+                      class="w-8 h-8 bg-slate-950 rounded-full flex items-center justify-center"
+                    >
+                      <span
+                        id="de-badge"
+                        class="text-[10px] font-semibold text-white"
+                        >BRL</span
+                      >
+                    </div>
+                    <div>
+                      <h1 id="de-code" class="font-manrope">BRL</h1>
+                      <p id="de-name" class="text-[10px] text-gray-500">
+                        Real brasileiro
+                      </p>
+                    </div>
+                    <div class="text-2xl flex items-center justify-center">
+                      <p>⌄</p>
+                    </div>
+                  </div>
+                  <select
+                    id="de-select"
+                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  >
+                    <option value="BRL" data-name="Real brasileiro">
+                      BRL — Real brasileiro
+                    </option>
+                    <option value="USD" data-name="Dólar americano">
+                      USD — Dólar americano
+                    </option>
+                    <option value="EUR" data-name="Euro">EUR — Euro</option>
+                    <option value="GBP" data-name="Libra esterlina">
+                      GBP — Libra esterlina
+                    </option>
+                    <option value="JPY" data-name="Iene japonês">
+                      JPY — Iene japonês
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-[12px] font-manrope text-gray-500">PARA</h3>
+                <div class="relative">
+                  <div
+                    class="flex items-center justify-between gap-4 px-4 border border-gray-400/80 rounded-xl py-3"
+                  >
+                    <div
+                      class="w-8 h-8 bg-slate-950 rounded-full flex items-center justify-center"
+                    >
+                      <span
+                        id="para-badge"
+                        class="text-[10px] font-semibold text-white"
+                        >BRL</span
+                      >
+                    </div>
+                    <div>
+                      <h1 id="para-code" class="font-manrope">BRL</h1>
+                      <p id="para-name" class="text-[10px] text-gray-500">
+                        Real Brasileiro
+                      </p>
+                    </div>
+                    <div class="text-2xl flex items-center justify-center">
+                      <p>⌄</p>
+                    </div>
+                  </div>
+                  <select
+                    id="para-select"
+                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  >
+                    <option value="BRL" data-name="Real brasileiro">
+                      BRL — Real brasileiro
+                    </option>
+                    <option value="USD" data-name="Dólar americano">
+                      USD — Dólar americano
+                    </option>
+                    <option value="EUR" data-name="Euro">EUR — Euro</option>
+                    <option value="GBP" data-name="Libra esterlina">
+                      GBP — Libra esterlina
+                    </option>
+                    <option value="JPY" data-name="Iene japonês">
+                      JPY — Iene japonês
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-slate-950 p-6 rounded-xl">
+              <div class="text-[12px] flex flex-col gap-5">
+                <div class="flex flex-col gap-2">
+                  <p class="font-manrope text-gray-500">VOCÊ RECEBE</p>
+                  <div class="font-manrope flex items-center justify-between">
+                    <span class="text-white text-3xl">US$ 174,22</span>
+                    <span
+                      class="bg-emerald-700/30 text-emerald-500 p-1 rounded-lg"
+                      >USD</span
+                    >
+                  </div>
+                </div>
+                <div class="border-b-1 border-gray-500/50"></div>
+                <div>
+                  <p class="text-gray-500">1 BRL = 0,1742 USD</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="#mercado" class="relative w-full bg-white z-50 py-5 px-4 mt-10 mb-5 lg:flex lg:flex-col lg:items-start lg:justify-between border-y border-gray-500/30">
+      <div class="w-full flex items-center justify-between mb-4 lg:gap-20">
+        <div class="font-manrope">
+          <h3 class="text-[12px] text-emerald-700">RADAR DO MERCADO</h3>
+          <h1>Principais cotações</h1>
+        </div>
+        <p class="text-[10px]">Variação nas últimas 24 horas</p>
+      </div>
+
+      <div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div
+          class="flex items-center justify-between border border-gray-400/70 rounded-xl px-4 py-3"
+        >
+          <div class="font-manrope">
+            <h2 class="text-gray-600">USD / BRL</h2>
+            <h1 class="">R$ 5,74</h1>
+          </div>
+          <div>
+            <span class="text-emerald-700 bg-emerald-400/10 p-1 rounded-md"
+              >+0,42%</span
+            >
+          </div>
+        </div>
+
+        <div
+          class="flex items-center justify-between border border-gray-400/70 rounded-xl px-4 py-3"
+        >
+          <div class="font-manrope">
+            <h2 class="text-gray-600">EUR / BRL</h2>
+            <h1 class="">R$ 6,24</h1>
+          </div>
+          <div>
+            <span class="text-red-700 bg-red-400/30 p-1 rounded-md"
+              >-0,18%</span
+            >
+          </div>
+        </div>
+
+        <div
+          class="flex items-center justify-between border border-gray-400/70 rounded-xl px-4 py-3"
+        >
+          <div class="font-manrope">
+            <h2 class="text-gray-600">GBP / BRL</h2>
+            <h1 class="">R$ 7,45</h1>
+          </div>
+          <div>
+            <span class="text-emerald-700 bg-emerald-400/10 p-1 rounded-md"
+              >+0,09%</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="bg-emerald-50 text-gray-500 text-[12px] flex justify-between px-4 lg:px-10 py-6"
+    >
+      <p>As cotações são apenas para fins informativos.</p>
+      <p>Última atualização: hoje, 14:32 BRT</p>
+    </footer>
+  </body>
 </html>
