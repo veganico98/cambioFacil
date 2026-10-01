@@ -1,0 +1,27 @@
+[
+  {
+    "currency": "BRL",
+    "description": "Real Brasileiro",
+    "icon": "R$"
+  },
+  {
+    "currency": "USD",
+    "description": "Dólar Americano",
+    "icon": "$"
+  },
+  {
+    "currency": "EUR",
+    "description": "Euro",
+    "icon": "€"
+  },
+  {
+    "currency": "GBP",
+    "description": "Libra Esterlina",
+    "icon": "£"
+  },
+  {
+    "currency": "JPY",
+    "description": "Iene Japonês",
+    "icon": "¥"
+  }
+]
