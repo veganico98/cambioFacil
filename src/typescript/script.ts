@@ -1,4 +1,5 @@
 import Cambio from "./cambio.js";
+import Mercado from "./mercado.js";
 
 const deSelect = document.getElementById("de-select");
 const paraSelect = document.getElementById("para-select");
@@ -13,18 +14,18 @@ function validateSelect(select: unknown) {
 }
 
 function multiplicator() {
-    if (inputValue instanceof HTMLInputElement) {
-        return Number(inputValue.value)
-    } else {
-        return
-    }
+  if (inputValue instanceof HTMLInputElement) {
+    return Number(inputValue.value);
+  } else {
+    return;
+  }
 }
 
 inputValue?.addEventListener("input", () => {
-    fetchCambio()
-})
+  fetchCambio();
+});
 
-inputValue?.addEventListener
+inputValue?.addEventListener;
 
 let deValue = validateSelect(deSelect);
 let paraValue = validateSelect(paraSelect);
@@ -95,9 +96,10 @@ async function fetchCambio() {
     `https://api.frankfurter.dev/v2/rate/${deValue}/${paraValue}`,
   );
   const data = await response.json();
+
   const dataCurrency = await fetchCurrency();
   const numberMultiplicator = multiplicator();
-  if (numberMultiplicator) {    
+  if (numberMultiplicator) {
     handleCambio(data, dataCurrency, numberMultiplicator);
   }
 }
@@ -106,3 +108,9 @@ function handleCambio(data: any, currency: any, multiplicator: number) {
   const cambio = new Cambio(data, currency, multiplicator);
   cambio.init();
 }
+
+function handleMercado() {
+  const mercado = new Mercado();
+  mercado.init()
+}
+handleMercado();
