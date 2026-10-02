@@ -53,6 +53,13 @@ export default class Cambio {
     }
   }
 
+  showComparison() {
+    const comparison = document.getElementById("comparison");
+    if(comparison && comparison instanceof HTMLParagraphElement){
+      comparison.innerText = `1 ${this.data.base} = ${this.data.rate} ${this.data.quote}`
+    }
+  }
+
   show() {
     // console.log(this.data);
     // console.log(this.data.base);
@@ -61,6 +68,7 @@ export default class Cambio {
   init() {
     this.show();
     this.quoteTag();
+    this.showComparison();
     this.conversion();
   }
 }
