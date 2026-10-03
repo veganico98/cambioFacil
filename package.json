@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "build": "tsc",
+    "build": "tsc && mkdir -p dist/css && sed -e 's#./src/styles/tailwind/output.css#./css/output.css#' -e 's#./src/styles/css/style.css#./css/style.css#' -e 's#./dist/script.js#./script.js#' index.html > dist/index.html && cp src/styles/css/style.css dist/css/ && npx @tailwindcss/cli -i ./src/styles/tailwind/input.css -o ./dist/css/output.css --minify",
     "dev": "npx @tailwindcss/cli -i ./src/styles/tailwind/input.css -o ./src/styles/tailwind/output.css --watch"
   },
   "repository": {
