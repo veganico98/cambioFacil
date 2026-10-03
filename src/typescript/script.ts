@@ -4,6 +4,8 @@ import Mercado from "./mercado.js";
 const deSelect = document.getElementById("de-select");
 const paraSelect = document.getElementById("para-select");
 const inputValue = document.getElementById("inputValue");
+const dataAtualizada = document.getElementById("dataAtualizada");
+const dataAtualizadaFooter = document.getElementById("dataAtualizadaFooter");
 
 function validateSelect(select: unknown) {
   if (select instanceof HTMLSelectElement) {
@@ -22,7 +24,7 @@ function multiplicator() {
 }
 
 inputValue?.addEventListener("input", () => {
-  fetchCambio();
+  handleData();
 });
 
 inputValue?.addEventListener;
@@ -37,8 +39,8 @@ deSelect?.addEventListener("change", () => {
   const name = document.getElementById("de-name");
 
   selectTag(deSelect, badge, code, name);
+  handleData();
 
-  fetchCambio();
 });
 
 paraSelect?.addEventListener("change", () => {
@@ -48,8 +50,8 @@ paraSelect?.addEventListener("change", () => {
   const name = document.getElementById("para-name");
 
   selectTag(paraSelect, badge, code, name);
+  handleData();
 
-  fetchCambio();
 });
 
 async function selectTag(
@@ -96,10 +98,16 @@ async function fetchCambio() {
     `https://api.frankfurter.dev/v2/rate/${deValue}/${paraValue}`,
   );
   const data = await response.json();
+  return data;
+}
 
+async function handleData() {
+  const data = await fetchCambio();
   const dataCurrency = await fetchCurrency();
   const numberMultiplicator = multiplicator();
   if (numberMultiplicator) {
+  console.log(data)
+
     handleCambio(data, dataCurrency, numberMultiplicator);
   }
 }
@@ -114,3 +122,17 @@ function handleMercado() {
   mercado.init()
 }
 handleMercado();
+
+async function date() {
+  const data = await fetchCambio();
+  const [ano, mes, dia] = data.date.split("-");
+  const dataFormatada = `${dia}/${mes}/${ano}`;
+  
+  if(dataAtualizada && dataAtualizada instanceof HTMLElement && dataAtualizadaFooter && dataAtualizadaFooter instanceof HTMLParagraphElement) {
+    dataAtualizada.innerText = dataFormatada;
+    dataAtualizadaFooter.innerText = `Última atualização: hoje, ${dataFormatada} BRT`
+  }
+
+}
+
+date()
