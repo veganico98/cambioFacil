@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "build": "tsc",
     "dev": "npx @tailwindcss/cli -i ./src/styles/tailwind/input.css -o ./src/styles/tailwind/output.css --watch"
   },
   "repository": {
