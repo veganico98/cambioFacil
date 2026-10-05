@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/styles/tailwind/output.css" />
-    <link rel="stylesheet" href="./src/styles/css/style.css">
+    <link rel="stylesheet" href="./src/styles/css/style.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=payments,local_atm,paid"
@@ -18,7 +18,7 @@
     >
       <div class="flex items-center gap-2">
         <div
-          class="w-13 h-13 bg-slate-950 flex items-center justify-center rounded-xl"
+          class="w-13 h-13 p-4 bg-slate-950 flex items-center justify-center rounded-xl"
         >
           <span class="text-emerald-400 material-symbols-outlined"> paid </span>
         </div>
@@ -99,30 +99,27 @@
           <div class="flex flex-col">
             <h3 class="font-manrope text-[12px] text-gray-500">VOCÊ ENVIA</h3>
             <div
-              class="h-12 bg-gray-200 flex items-center justify-between border-1 border-gray-300 rounded-lg px-6 has-[:focus]:border-emerald-500"
+              class="h-12 bg-gray-200 grid grid-cols-[auto_1fr_auto] items-center gap-2 border-1 border-gray-300 rounded-lg px-6 has-[:focus]:border-emerald-500"
             >
-              <div>
-                <span class="font-manrope text-gray-500">R$</span>
-                <input
+              <span class="font-semibold text-gray-500">R$</span>
+              <input
                 id="inputValue"
-                  class="outline-none ring-0 focus:outline-none focus:ring-0 appearance-none"
-                  type="number"
-                />
-              </div>
-              <span class="font-manrope text-gray-500">BRL</span>
+                class="w-full min-w-0 bg-transparent outline-none"
+              />
+              <span class="font-semibold text-gray-500">BRL</span>
             </div>
           </div>
 
           <div class="flex flex-col justify-between gap-4">
-            <div class="w-full flex justify-between lg:gap-4 w-full">
-              <div>
+            <div class="w-full grid grid-cols-2 gap-2 lg:gap-4">
+              <div class="">
                 <h3 class="text-[12px] font-manrope text-gray-500">DE</h3>
                 <div class="relative">
                   <div
                     class="flex items-center justify-between gap-4 px-4 border border-gray-400/80 rounded-xl py-3"
                   >
                     <div
-                      class="w-8 h-8 bg-slate-950 rounded-full flex items-center justify-center"
+                      class="w-8 h-8 p-2 bg-slate-950 rounded-full flex items-center justify-center"
                     >
                       <span
                         id="de-badge"
@@ -147,14 +144,14 @@
                 </div>
               </div>
 
-              <div>
+              <div class="">
                 <h3 class="text-[12px] font-manrope text-gray-500">PARA</h3>
                 <div class="relative">
                   <div
                     class="flex items-center justify-between gap-4 px-4 border border-gray-400/80 rounded-xl py-3"
                   >
                     <div
-                      class="w-8 h-8 bg-slate-950 rounded-full flex items-center justify-center"
+                      class="w-8 h-8 p-2 bg-slate-950 rounded-full flex items-center justify-center"
                     >
                       <span
                         id="para-badge"
@@ -185,7 +182,9 @@
                 <div class="flex flex-col gap-2">
                   <p class="font-manrope text-gray-500">VOCÊ RECEBE</p>
                   <div class="font-manrope flex items-center justify-between">
-                    <span id="conversion" class="text-white text-3xl">0,00</span>
+                    <span id="conversion" class="text-white text-3xl"
+                      >0,00</span
+                    >
                     <span
                       id="quote"
                       class="hidden bg-emerald-700/30 text-emerald-500 p-1 rounded-lg"
@@ -215,13 +214,14 @@
         <p class="text-[10px]">Variação nas últimas 24 horas</p>
       </div>
 
-      <div id="gridMercado" class="w-full grid grid-cols-2 lg:grid-cols-4 gap-5">
-        
-      </div>
+      <div
+        id="gridMercado"
+        class="w-full grid grid-cols-2 lg:grid-cols-4 gap-5"
+      ></div>
     </section>
 
     <footer
-      class="bg-emerald-50 text-gray-500 text-[12px] flex justify-between px-4 lg:px-10 py-6"
+      class="bg-emerald-50 text-gray-500 text-[12px] flex justify-between gap-8 md:gap-0 px-4 lg:px-10 py-6"
     >
       <p>As cotações são apenas para fins informativos.</p>
       <p id="dataAtualizadaFooter"></p>
