@@ -6,7 +6,7 @@ interface CambioInfo {
 }
 
 export default class Mercado {
-  moedas = ["USD", "EUR", "GBP"];
+  moedas = ["USD", "EUR", "GBP", "CAD"];
 
   async fetchCotacoes(): Promise<CambioInfo[]> {
     const cotacoes = await Promise.all(

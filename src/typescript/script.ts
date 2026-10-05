@@ -7,13 +7,29 @@ const inputValue = document.getElementById("inputValue");
 const dataAtualizada = document.getElementById("dataAtualizada");
 const dataAtualizadaFooter = document.getElementById("dataAtualizadaFooter");
 
-function validateSelect(select: unknown) {
-  if (select instanceof HTMLSelectElement) {
+console.log(paraSelect?.innerHTML);
+
+function valueSelect(select: unknown) {
+  if (select && select instanceof HTMLSelectElement) {
     return select.value;
   } else {
-    return "Erro";
+    return;
   }
 }
+
+let deValue = valueSelect(deSelect);
+let paraValue = valueSelect(paraSelect);
+
+function validateSelect(select: unknown) {
+  if (select && select instanceof HTMLSelectElement) {
+    return select;
+  } else {
+    return;
+  }
+}
+
+let deValidated = validateSelect(deSelect);
+let paraValidated = validateSelect(paraSelect);
 
 function multiplicator() {
   if (inputValue instanceof HTMLInputElement) {
@@ -29,29 +45,22 @@ inputValue?.addEventListener("input", () => {
 
 inputValue?.addEventListener;
 
-let deValue = validateSelect(deSelect);
-let paraValue = validateSelect(paraSelect);
-
 deSelect?.addEventListener("change", () => {
-  deValue = validateSelect(deSelect);
+  deValue = valueSelect(deSelect);
   const badge = document.getElementById("de-badge");
   const code = document.getElementById("de-code");
   const name = document.getElementById("de-name");
-
   selectTag(deSelect, badge, code, name);
   handleData();
-
 });
 
 paraSelect?.addEventListener("change", () => {
-  paraValue = validateSelect(paraSelect);
+  paraValue = valueSelect(paraSelect);
   const badge = document.getElementById("para-badge");
   const code = document.getElementById("para-code");
   const name = document.getElementById("para-name");
-
   selectTag(paraSelect, badge, code, name);
   handleData();
-
 });
 
 async function selectTag(
@@ -106,8 +115,6 @@ async function handleData() {
   const dataCurrency = await fetchCurrency();
   const numberMultiplicator = multiplicator();
   if (numberMultiplicator) {
-  console.log(data)
-
     handleCambio(data, dataCurrency, numberMultiplicator);
   }
 }
@@ -119,20 +126,57 @@ function handleCambio(data: any, currency: any, multiplicator: number) {
 
 function handleMercado() {
   const mercado = new Mercado();
-  mercado.init()
+  mercado.init();
 }
 handleMercado();
+
+async function currentsOptions(select: HTMLSelectElement) {
+
+  console.log("currentsOptions:", select.id);
+  const data = await fetchCurrency();
+
+  data.forEach((item) => {
+    const options = document.createElement("option");
+
+    options.classList.add("text-black");
+    options.value = item.currency;
+    options.textContent = `${item.currency} — ${item.description}`;
+
+    select.appendChild(options);
+  });
+}
 
 async function date() {
   const data = await fetchCambio();
   const [ano, mes, dia] = data.date.split("-");
   const dataFormatada = `${dia}/${mes}/${ano}`;
-  
-  if(dataAtualizada && dataAtualizada instanceof HTMLElement && dataAtualizadaFooter && dataAtualizadaFooter instanceof HTMLParagraphElement) {
-    dataAtualizada.innerText = dataFormatada;
-    dataAtualizadaFooter.innerText = `Última atualização: hoje, ${dataFormatada} BRT`
-  }
 
+  if (
+    dataAtualizada &&
+    dataAtualizada instanceof HTMLElement &&
+    dataAtualizadaFooter &&
+    dataAtualizadaFooter instanceof HTMLParagraphElement
+  ) {
+    dataAtualizada.innerText = dataFormatada;
+    dataAtualizadaFooter.innerText = `Última atualização: hoje, ${dataFormatada} BRT`;
+  }
 }
 
-date()
+async function init() {
+  if (
+    !(deSelect instanceof HTMLSelectElement) ||
+    !(paraSelect instanceof HTMLSelectElement)
+  ) {
+    return;
+  }
+
+  await currentsOptions(deSelect);
+  await currentsOptions(paraSelect);
+  
+  deValue = valueSelect(deSelect);
+  paraValue = valueSelect(paraSelect);
+
+  await date();
+}
+
+init();
