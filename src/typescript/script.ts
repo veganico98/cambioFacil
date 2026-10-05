@@ -7,8 +7,6 @@ const inputValue = document.getElementById("inputValue");
 const dataAtualizada = document.getElementById("dataAtualizada");
 const dataAtualizadaFooter = document.getElementById("dataAtualizadaFooter");
 
-console.log(paraSelect?.innerHTML);
-
 function valueSelect(select: unknown) {
   if (select && select instanceof HTMLSelectElement) {
     return select.value;
@@ -19,17 +17,6 @@ function valueSelect(select: unknown) {
 
 let deValue = valueSelect(deSelect);
 let paraValue = valueSelect(paraSelect);
-
-function validateSelect(select: unknown) {
-  if (select && select instanceof HTMLSelectElement) {
-    return select;
-  } else {
-    return;
-  }
-}
-
-let deValidated = validateSelect(deSelect);
-let paraValidated = validateSelect(paraSelect);
 
 function multiplicator() {
   if (inputValue instanceof HTMLInputElement) {
@@ -131,8 +118,6 @@ function handleMercado() {
 handleMercado();
 
 async function currentsOptions(select: HTMLSelectElement) {
-
-  console.log("currentsOptions:", select.id);
   const data = await fetchCurrency();
 
   data.forEach((item) => {
@@ -162,7 +147,7 @@ async function date() {
   }
 }
 
-async function init() {
+async function options() {
   if (
     !(deSelect instanceof HTMLSelectElement) ||
     !(paraSelect instanceof HTMLSelectElement)
@@ -172,11 +157,11 @@ async function init() {
 
   await currentsOptions(deSelect);
   await currentsOptions(paraSelect);
-  
+
   deValue = valueSelect(deSelect);
   paraValue = valueSelect(paraSelect);
 
   await date();
 }
 
-init();
+options();
